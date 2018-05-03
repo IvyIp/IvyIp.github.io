@@ -66,7 +66,7 @@
 		</div>
 		<script>
 			$( document ).ready(function() {
-				let obj = new VCompleteness(".indicator", {"method": "rotate"});
+				let obj = new VCompleteness(".indicator", {"method": "blur"});
 				$("#range").change(function() {
 					let score = $(this).val();
 					$(".score").html(score);
