@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="src/js-video-playlist-controller.js"></script>
+    <style>
+      #video-wrapper>video{
+        max-width: 100%;
+        height: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="video-wrapper">
+    </div>
+    Video List
+    <ul id="video-list"></ul>
+    Event Log
+    <ul id="record"></ul>
+  <script>
+    let list = ["demo/1.mp4", "demo/2.mp4", "demo/3.mp4"];
+    let wrapper = document.getElementById("video-wrapper");
+    let videoPlayListController = new videoPlaylist(wrapper, list, {autoplay: true, loop: false});
+    let record = document.getElementById("record");
+    wrapper.addEventListener('videoChanged', function (e) {
+        let element = document.createElement('li');
+        element.textContent = `[${new Date()}] Change to: index: ${e.detail.index} src: ${e.detail.video}`;
+        record.appendChild(element);
+    });
+    wrapper.addEventListener('playListEnded', function (e) {
+        let element = document.createElement('li');
+        element.textContent = `[${new Date()}] Playlist ended`;
+        record.appendChild(element);
+    });
+    for (let i = 0; i < list.length; i++){
+        let video = document.createElement('li');
+        video.textContent = `index: ${i} - path: ${list[i]}`;
+        document.getElementById("video-list").appendChild(video);
+    }
+  </script>
+  </body>
+</html>
