@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+    <head>
+    </head>
+    <body>
+        <script>
+            var receiveEvent = null;
+            function addLog(text) {
+                var newcontent = document.createElement('div');
+                newcontent.innerHTML = text;
+                document.querySelector('.debug').appendChild(newcontent.firstChild);
+            }
+            function receiveMessage(event) {
+                addLog('[' + new Date() + ']' + JSON.stringify(event));
+                receiveEvent = event;
+            }
+            function postMessage() {
+                if (receiveEvent){
+                 event.source.postMessage("HI 123456", event.origin);
+                }
+            }
+        </script>
+        <div class="debug"></div>
+        <button onclick="postMessage()">POST Message</button>
+</html>
