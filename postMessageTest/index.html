@@ -19,6 +19,7 @@
                  event.source.postMessage("HI 123456", event.origin);
                 }
             }
+            window.addEventListener("message", receiveMessage, false);
         </script>
         <div class="debug"></div>
         <button onclick="postMessage()">POST Message</button>
