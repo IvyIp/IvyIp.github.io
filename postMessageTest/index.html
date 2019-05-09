@@ -17,7 +17,8 @@
             function postMessage() {
                 console.log(receiveEvent);
                 if (receiveEvent){
-                    receiveEvent.source.postMessage("HI 123456", event.origin);
+                    console.log('POST');
+                    receiveEvent.source.postMessage("HI 123456", receiveEvent.origin);
                 }
             }
             window.addEventListener("message", receiveMessage, false);
