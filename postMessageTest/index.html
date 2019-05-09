@@ -17,11 +17,13 @@
             function postMessage() {
                 console.log(receiveEvent);
                 if (receiveEvent){
-                    console.log('POST');
                     receiveEvent.source.postMessage("HI 123456", receiveEvent.origin);
                 }
             }
             window.addEventListener("message", receiveMessage, false);
+            setInterval(() => {
+                postMessage()
+            }, 1000);
         </script>
         <div class="debug"></div>
         <button onclick="postMessage()">POST Message</button>
