@@ -6,15 +6,16 @@
             var receiveEvent = null;
             function addLog(text) {
                 var newcontent = document.createElement('div');
-                newcontent.innerHTML = text;
+                newcontent.innerText = text;
                 document.querySelector('.debug').appendChild(newcontent.firstChild);
             }
             function receiveMessage(event) {
                 console.log(event);
-                addLog('[' + new Date() + ']' + JSON.stringify(event));
+                addLog('[' + new Date() + ']' + event.data + ' ' + event.origin);
                 receiveEvent = event;
             }
             function postMessage() {
+                console.log(receiveEvent);
                 if (receiveEvent){
                  event.source.postMessage("HI 123456", event.origin);
                 }
