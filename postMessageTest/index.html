@@ -17,7 +17,7 @@
             function postMessage() {
                 console.log(receiveEvent);
                 if (receiveEvent){
-                    receiveEvent.source.postMessage("HI 123456", "*");
+                    receiveEvent.source.postMessage(`HI, it's ${(new Date()).toLocaleString()}`, "*");
                 }
             }
             window.addEventListener("message", receiveMessage, false);
