@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<input id="abc" style="width: 320px">
+<input id="count" style="width: 320px">
+<script id="jsbin-javascript">
+var count = 5;
+var setIntervalId = null;
+function runActivity() {
+  console.log('runActivity');
+  var appUrl =
+ 'https://api.test.kaiostech.com/apps/manifest/3VgIJyeGD4rgJcT82vI4';
+  document.getElementById('abc').value = appUrl;
+  
+  document.getElementById('count').value = count;
+  count -= 1;
+  if (count > 0) {
+    return;
+  }
+  clearInterval(setIntervalId);
+ var activity = new MozActivity({
+  name: "open-page",
+  data: {
+    url: appUrl,
+    type: "url"
+  }
+ });
+ activity.onerror = function() {
+  console.log(JSON.stringify(this.error));
+ }
+}
+window.addEventListener('load', function() {
+  setIntervalId = setInterval(runActivity, 1000);
+})
+</script>
+
+
+
+<script id="jsbin-source-javascript" type="text/javascript">var count = 5;
+var setIntervalId = null;
+function runActivity() {
+  console.log('runActivity');
+  var appUrl =
+ 'https://api.kaiostech.com/apps/manifest/oASA_1NTK9DeepyKj4iD';
+  document.getElementById('abc').value = appUrl;
+  
+  document.getElementById('count').value = count;
+  count -= 1;
+  if (count > 0) {
+    return;
+  }
+  clearInterval(setIntervalId);
+ var activity = new MozActivity({
+  name: "open-page",
+  data: {
+    url: appUrl,
+    type: "url"
+  }
+ });
+ activity.onerror = function() {
+  console.log(JSON.stringify(this.error));
+ }
+}
+window.addEventListener('load', function() {
+  setIntervalId = setInterval(runActivity, 1000);
+})
+</script></body>
+</html>
